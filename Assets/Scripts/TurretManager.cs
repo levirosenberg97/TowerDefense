@@ -11,80 +11,32 @@ public class TurretManager : MonoBehaviour
 
     public int damage;
     public float timeBetweenShots;
-    Ray shootRay;
-    RaycastHit shootHit;
+
+    public float rotationSpeed;
+
     float timer;
     float range = 100f;
     int shootableMask;
 
-    //ParticleSystem gunParticles;
-    LineRenderer gunLine;
-    Light gunLight;
-    public float effectsTime;
+    public int value;
+
+    ShootingScript shoot;
+   
 
 
     private void Start()
     {
+        shoot = GetComponent<ShootingScript>();
+
         shootableMask = LayerMask.GetMask("Shootable");
 
         targets = new List<Transform>();
         MyTransform = transform;
-        //gunParticles = GetComponent<ParticleSystem>();
-        gunLine = GetComponent<LineRenderer>();
-        gunLight = GetComponent<Light>();
-
+   
+      
         timer = 0f;
     }
 
-    void Shoot()
-    {
-        timer = 0f;
-
-        gunLight.enabled = true;
-        gunLine.enabled = true;
-        gunLine.SetPosition(0, transform.position);
-        //gunParticles.Play();
-        shootRay.origin = transform.position;
-        shootRay.direction = transform.forward;
-
-        if(Physics.Raycast(shootRay,out shootHit,range, shootableMask))
-        {
-            TankHealth tankHealth = shootHit.collider.GetComponent<TankHealth>();
-
-            if (tankHealth != null)
-            {
-                tankHealth.TakeDamage(damage);
-            }
-
-            
-
-            gunLine.SetPosition(1, shootHit.point);
-        }
-        else
-        {
-            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
-        }
-    }
-
-    void DisableEffects()
-    {
-        gunLine.enabled = false;
-        gunLight.enabled = false;
-        //gunParticles.Stop();
-    }
-
-    //public void AddAllObjects()
-    //{
-    //    GameObject[] gos = GameObject.FindGameObjectsWithTag(objectTag);
-
-    //    foreach(GameObject thing in gos)
-    //    {
-    //        if (!targets.Contains(thing.transform))
-    //        {
-    //            AddTarget(thing.transform);
-    //        }
-    //    }
-    //}
 
     public void AddTarget(Transform thing)
     {
@@ -100,44 +52,41 @@ public class TurretManager : MonoBehaviour
         });
     }
 
+    void FireOnTarget()
+    {
+        if (targets[0] != null)
+        {
+            SortTargetsByDistance();
+            selectedObject = targets[0];
+
+            for (int i = 0; i < targets.Count; i++)
+            {
+                if (targets[i].gameObject.activeInHierarchy == false)
+                {
+                    targets.Remove(targets[i]);
+                }
+            }
+
+            if (selectedObject != null && timer >= timeBetweenShots)
+            {
+                shoot.Fire();
+                timer = 0;
+            }
+
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(selectedObject.transform.position - transform.position), Time.deltaTime * rotationSpeed);
+
+        }
+    }
+
     private void Update()
     {
         timer += Time.deltaTime;
         if (targets.Count > 0)
         {
-            if (targets[0] != null)
-            {
-                SortTargetsByDistance();
-                selectedObject = targets[0];
-
-                for (int i = 0; i < targets.Count; i++)
-                {
-                    if (targets[i].gameObject.activeInHierarchy == false)
-                    {
-                        targets.Remove(targets[i]);
-                    }
-                }
-
-                if (selectedObject != null && timer >= timeBetweenShots)
-                {
-                    Shoot();
-                }
-
-                if (timer >= timeBetweenShots * effectsTime)
-                {
-                    DisableEffects();
-                }
-
-                transform.LookAt(selectedObject);
-            }
-
+            FireOnTarget();
         }
     }
-            
-
-        
-    
-
 
     private void OnTriggerEnter(Collider other)
     {

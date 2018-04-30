@@ -7,6 +7,10 @@ TagManager:
   - Grass
   - Waypoint
   - Tank
+  - Spawnable
+  - BaseTurret
+  - Test
+  - MineTurret
   layers:
   - Default
   - TransparentFX
@@ -17,10 +21,10 @@ TagManager:
   - 
   - 
   - Shootable
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Turret
+  - Click
+  - Cursor
   - 
   - 
   - 

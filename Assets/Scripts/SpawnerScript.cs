@@ -4,28 +4,69 @@ using UnityEngine;
 
 public class SpawnerScript : MonoBehaviour
 {
-    public GameObject enemy;
+    //public GameObject enemy;
     public float spawnTime;
-    public Transform spawnPoint;
+
     AIManager enemyAI;
+    TankHealth enemyHealth;
+
+    public int amountSpawned;
 
     public List<Transform> waypoints;
+    public MoneyTracker moneyTracker;
 
+    ObjectPool pool;
+
+    public WaveManager wave;
 
 	void Start ()
     {
-        enemyAI = enemy.GetComponent<AIManager>();
-        InvokeRepeating("Spawn", spawnTime, spawnTime);
+        pool = GetComponent<ObjectPool>();
+        
+        //InvokeRepeating("Spawn", spawnTime, spawnTime);
 	}
-	
+
+    private void Update()
+    {
+        spawnTime -= Time.deltaTime;
+        if(spawnTime <= 0 && amountSpawned < wave.enemiesSpawned)
+        {
+            Spawn();
+            spawnTime = wave.spawnTime;
+            amountSpawned++;
+        }
+
+        if(wave.timer < 1)
+        {
+            amountSpawned = 0;
+        }
+    }
+
     void Spawn()
     {
-        
-        for(int i = 0; i < waypoints.Count; i++)
+        GameObject spawnedEnemy = pool.GetObject();
+
+        enemyAI = spawnedEnemy.GetComponent<AIManager>();
+
+        enemyHealth = spawnedEnemy.GetComponent<TankHealth>();
+
+        for (int i = 0; i < waypoints.Count; i++)
         {
             enemyAI.waypoints[i] = waypoints[i]; 
         }
-        Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+
+        enemyHealth.health = wave.tankHealth;
+
+        enemyHealth.moneyTracker = moneyTracker;
+
+        spawnedEnemy.transform.position = transform.position;
+
+        spawnedEnemy.transform.rotation = transform.rotation;
+
+        spawnedEnemy.SetActive(true);
+      
+        enemyAI.setDestination();
+        
     }
 
 }
