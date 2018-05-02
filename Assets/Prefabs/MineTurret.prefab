@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 33986249102348208}
   - component: {fileID: 114284893559815700}
   - component: {fileID: 64893427279636062}
+  - component: {fileID: 114172704561493664}
   m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
@@ -60,6 +61,7 @@ GameObject:
   - component: {fileID: 33239348131204574}
   - component: {fileID: 114929576010970328}
   - component: {fileID: 64970023161829914}
+  - component: {fileID: 114311498650882658}
   m_Layer: 10
   m_Name: SouthBarrel
   m_TagString: Untagged
@@ -80,6 +82,7 @@ GameObject:
   - component: {fileID: 33012349161091356}
   - component: {fileID: 114357282900840136}
   - component: {fileID: 64695259005856412}
+  - component: {fileID: 114759562368335166}
   m_Layer: 10
   m_Name: WestBarrel
   m_TagString: Untagged
@@ -100,6 +103,7 @@ GameObject:
   - component: {fileID: 33099117381014374}
   - component: {fileID: 114976574442404178}
   - component: {fileID: 64711672371273890}
+  - component: {fileID: 114675581547372032}
   m_Layer: 10
   m_Name: NorthBarrel
   m_TagString: Untagged
@@ -120,6 +124,7 @@ GameObject:
   - component: {fileID: 33474198585261552}
   - component: {fileID: 114999675636438110}
   - component: {fileID: 64171612337755378}
+  - component: {fileID: 114092901341898942}
   m_Layer: 10
   m_Name: EastBarrel
   m_TagString: Untagged
@@ -534,6 +539,34 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
+--- !u!114 &114092901341898942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1797240967458182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: ccaa480994a9e1445b4162977567119d, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
+--- !u!114 &114172704561493664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1460800498824538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: 2539519e50abf654d8b7045188c84eb8, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114184548257776440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1512,6 +1545,20 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114311498650882658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1518751834853390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: ccaa480994a9e1445b4162977567119d, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114357282900840136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1772,6 +1819,7 @@ MonoBehaviour:
   objectTag: Tank
   damage: 50
   timeBetweenShots: 2
+  value: 0
 --- !u!114 &114486940564315928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1784,6 +1832,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &114675581547372032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1604706006643168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: ccaa480994a9e1445b4162977567119d, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114691197891760124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1796,6 +1858,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &114759562368335166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565119379905804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: ccaa480994a9e1445b4162977567119d, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114891367745525736
 MonoBehaviour:
   m_ObjectHideFlags: 1

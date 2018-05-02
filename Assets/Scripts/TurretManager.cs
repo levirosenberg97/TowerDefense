@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class TurretManager : MonoBehaviour
 {
     public List<Transform> targets;

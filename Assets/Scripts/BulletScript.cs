@@ -22,8 +22,8 @@ public class BulletScript : MonoBehaviour
     {
         if (other.collider.tag == "Tank")
         {
-            other.collider.GetComponent<TankHealth>().Damage(damage);
-            Debug.Log("Hit");
+            other.collider.GetComponent<IDamageable<int>>().Damage(damage);
+            //Debug.Log("Hit");
             DestroyBullet();
         }
     }

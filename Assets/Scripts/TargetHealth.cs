@@ -32,6 +32,7 @@ public class TargetHealth : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0;
         gameCanvas.gameObject.SetActive(false);
         gameOverCanvas.gameObject.SetActive(true);
     }

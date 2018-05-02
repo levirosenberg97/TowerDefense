@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 33705210729260324}
   - component: {fileID: 114216300468440872}
   - component: {fileID: 64787957555182036}
+  - component: {fileID: 114879085020152162}
   m_Layer: 10
   m_Name: Barrel
   m_TagString: Untagged
@@ -44,6 +45,7 @@ GameObject:
   - component: {fileID: 33997935425383840}
   - component: {fileID: 114257719005616972}
   - component: {fileID: 64138633207281024}
+  - component: {fileID: 114633632314017846}
   m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
@@ -1501,6 +1503,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!114 &114633632314017846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1506418430080792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: 2539519e50abf654d8b7045188c84eb8, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114740652994080760
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1517,6 +1533,21 @@ MonoBehaviour:
   damage: 10
   timeBetweenShots: 1.2
   rotationSpeed: 5
+  value: 0
+--- !u!114 &114879085020152162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1204372710439712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: ccaa480994a9e1445b4162977567119d, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!135 &135283991081303860
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -34,7 +34,7 @@ public class WaveManager : MonoBehaviour
         waveText.text = "Wave: " + waveNumber.ToString();
         tankHealth += 50;
         enemiesSpawned += 3;
-        if (spawnTime >= 2)
+        if (spawnTime > 2)
         {
             spawnTime -= .5f;
         }
@@ -43,6 +43,7 @@ public class WaveManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+     
         timer -= Time.deltaTime;
         float seconds = Mathf.RoundToInt(timer);
 
@@ -53,5 +54,16 @@ public class WaveManager : MonoBehaviour
         }
 
         timerText.text = "Next Wave: " + seconds;
-	}
+
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            Time.timeScale += 1;
+        }
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Time.timeScale -= 1;
+        }
+
+    }
 }

@@ -6,6 +6,7 @@ public class RemoveTurret : MonoBehaviour
 {
     public float distance;
     public MoneyTracker money;
+    public Material removalMaterial;
 	
 	void Start ()
     {
@@ -24,7 +25,7 @@ public class RemoveTurret : MonoBehaviour
     {
         if(other.gameObject.layer == 11)
         {
-            if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0))
             {
                 PooledObject pooledObject = other.GetComponentInParent<PooledObject>();
                 TurretManager turret = other.GetComponentInParent<TurretManager>();
@@ -32,6 +33,15 @@ public class RemoveTurret : MonoBehaviour
 
                 if(pooledObject != null)
                 {
+                    foreach (Transform child in other.transform.parent.transform)
+                    {
+                        MaterialManager childMaterial = child.GetComponent<MaterialManager>();
+                        if (childMaterial != null)
+                        {
+                            childMaterial.DefaultMaterial();
+                        }
+                    }
+
                     pooledObject.returnToPool();
                     if (turret != null)
                     {
@@ -41,6 +51,37 @@ public class RemoveTurret : MonoBehaviour
                     {
                         money.MoneyChange(mineTurret.value / 2);
                     }
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 11)
+        {
+            foreach (Transform child in other.transform.parent.transform)
+            {
+                MaterialManager childMaterial = child.GetComponent<MaterialManager>();
+                if (childMaterial != null)
+                {
+                    childMaterial.TurnRed();
+                }
+            }
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.layer == 11)
+        {
+            foreach(Transform child in other.transform.parent.transform)
+            {
+                MaterialManager childMaterial = child.GetComponent<MaterialManager>();
+                if (childMaterial != null)
+                {
+                    childMaterial.DefaultMaterial();
                 }
             }
         }

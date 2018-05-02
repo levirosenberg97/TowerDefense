@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 33139915651673394}
   - component: {fileID: 114675287936594292}
   - component: {fileID: 64420762139414626}
+  - component: {fileID: 114458046222536490}
   m_Layer: 10
   m_Name: Barrel
   m_TagString: Untagged
@@ -80,6 +81,7 @@ GameObject:
   - component: {fileID: 33267102005554164}
   - component: {fileID: 114065565586228430}
   - component: {fileID: 64438853620044890}
+  - component: {fileID: 114598622121558354}
   m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
@@ -268,6 +270,7 @@ MonoBehaviour:
   damage: 30
   timeBetweenShots: 2
   rotationSpeed: 4
+  value: 0
 --- !u!114 &114031698119229050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1260,6 +1263,20 @@ MonoBehaviour:
   pooledObjects: {fileID: 1477940437536954, guid: ef3579b52c088974fbdb28e233e866ac,
     type: 2}
   pooledAmount: 50
+--- !u!114 &114458046222536490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1536224846479594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: ccaa480994a9e1445b4162977567119d, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114471345033358818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1272,6 +1289,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 500
+--- !u!114 &114598622121558354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1668157300320240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cff14b41be32f640af6dc6d6172b033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material:
+  - {fileID: 2100000, guid: 2539519e50abf654d8b7045188c84eb8, type: 2}
+  - {fileID: 2100000, guid: 884278481b0300a478896ca754de92b7, type: 2}
 --- !u!114 &114675287936594292
 MonoBehaviour:
   m_ObjectHideFlags: 1

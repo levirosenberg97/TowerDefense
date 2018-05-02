@@ -25,7 +25,7 @@ public class MouseFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         if(other.tag == "Spawnable")
         {
 
@@ -38,13 +38,45 @@ public class MouseFollow : MonoBehaviour
                 canSpawn = false;
             }
 
+          
+        }
+
+        if (other.gameObject.layer == 11)
+        {
+            canSpawn = false;
+        }
+
+        foreach (Transform child in transform)
+        {
+            MaterialManager childMaterial = child.GetComponent<MaterialManager>();
+
+            if (childMaterial != null)
+            {
+                if (canSpawn == true)
+                {
+                    childMaterial.DefaultMaterial();
+                }
+                else
+                {
+                    childMaterial.TurnRed();
+                }
+            }
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //Debug.Log(other.tag);
+
+        if (other.gameObject.layer == 11)
+        {
             foreach (Transform child in transform)
             {
                 MaterialManager childMaterial = child.GetComponent<MaterialManager>();
-
                 if (childMaterial != null)
                 {
-                    if (canSpawn == true)
+                    if (value <= money.dollarAmount)
                     {
                         childMaterial.DefaultMaterial();
                     }
@@ -53,14 +85,9 @@ public class MouseFollow : MonoBehaviour
                         childMaterial.TurnRed();
                     }
                 }
+                canSpawn = true;
             }
-          
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log(other.tag);
 
         if (other.tag == "Spawnable")
         {
@@ -76,6 +103,8 @@ public class MouseFollow : MonoBehaviour
 
             canSpawn = false;
         }
+
+        
     }
 
     void GoToMouse()
@@ -114,7 +143,7 @@ public class MouseFollow : MonoBehaviour
             {
                 if(value <= money.dollarAmount)
                 {
-                    Debug.Log("pressed");
+                    //Debug.Log("pressed");
                     money.MoneyChange(-value);
                     SpawnObject();
                 }
